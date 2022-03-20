@@ -9,14 +9,13 @@ int next_number(int x) {
 	return sum;
 }
 
-void sequence(int* array, int& sequence_start, int& sequence_end) {
+void sequence(int* array, int& sequence_end) {
 	bool check = true;
 	for (int i = 1; check; i++) {
 		array[i] = next_number(array[i - 1]);
 
 		for (int j = 0; j < i; j++) {
 			if (array[i] == array[j]) {
-				sequence_start = j;
 				sequence_end = i;
 				check = false;
 				break;
@@ -48,14 +47,14 @@ int main()
 
 	while (a || b) {
 
-		int* array_a = new int[200], *array_b = new int[200];
-		int sequence_start_a, sequence_end_a, sequence_start_b, sequence_end_b, min_sum_a, min_sum_b;
+		int* array_a = new int[400], *array_b = new int[400];
+		int sequence_end_a, sequence_end_b, min_sum_a, min_sum_b;
 		array_a[0] = a;
 		array_b[0] = b;
 
 		//zapelnia tablice kolejnymi liczbami, az znajdzie cykl
-		sequence(array_a, sequence_start_a, sequence_end_a);
-		sequence(array_b, sequence_start_b, sequence_end_b);
+		sequence(array_a, sequence_end_a);
+		sequence(array_b, sequence_end_b);
 
 		cout << a << ' ' << b << ' ';
 		//szuka wspolnej liczby
